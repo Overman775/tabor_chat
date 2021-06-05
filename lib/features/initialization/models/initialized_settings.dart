@@ -12,7 +12,7 @@ class InitializedSettings {
 
   factory InitializedSettings.fromJson(Map<String, dynamic> json) => _$InitializedSettingsFromJson(json);
 
-  final String maxMessageLength;
-  final String maxRoomTitleLength;
-  final String maxUsernameLength;
+  final int maxMessageLength;
+  final int maxRoomTitleLength;
+  final int maxUsernameLength;
 }
