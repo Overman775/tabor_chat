@@ -1,0 +1,19 @@
+name: mad_navigator
+description: MadNavigator
+version: 0.0.3
+#author:
+#homepage:
+publish_to: none
+
+environment:
+  sdk: ">=2.12.0-0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  path_to_regexp: ^0.4.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+flutter:

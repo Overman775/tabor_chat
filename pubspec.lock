@@ -427,6 +427,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
+  mad_navigator:
+    dependency: "direct main"
+    description:
+      path: "packages/mad_navigator"
+      relative: true
+    source: path
+    version: "0.0.3"
   matcher:
     dependency: transitive
     description:
@@ -504,6 +511,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
+  path_to_regexp:
+    dependency: "direct main"
+    description:
+      name: path_to_regexp
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.0"
   pedantic:
     dependency: transitive
     description:
