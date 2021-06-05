@@ -66,27 +66,28 @@ flutter:
 
   assets:
     - assets/
-    - resources/fonts/cuprum/
+    - assets/translations/
+    - assets/fonts/cuprum/
   fonts:
     - family: Cuprum
       fonts:
-        - asset: resources/fonts/cuprum/Cuprum-Regular.ttf
+        - asset: assets/fonts/cuprum/Cuprum-Regular.ttf
           weight: 400
-        - asset: resources/fonts/cuprum/Cuprum-Italic.ttf
+        - asset: assets/fonts/cuprum/Cuprum-Italic.ttf
           weight: 400
           style: italic
-        - asset: resources/fonts/cuprum/Cuprum-Medium.ttf
+        - asset: assets/fonts/cuprum/Cuprum-Medium.ttf
           weight: 500
-        - asset: resources/fonts/cuprum/Cuprum-MediumItalic.ttf
+        - asset: assets/fonts/cuprum/Cuprum-MediumItalic.ttf
           weight: 500
           style: italic
-        - asset: resources/fonts/cuprum/Cuprum-SemiBold.ttf
+        - asset: assets/fonts/cuprum/Cuprum-SemiBold.ttf
           weight: 600
-        - asset: resources/fonts/cuprum/Cuprum-SemiBoldItalic.ttf
+        - asset: assets/fonts/cuprum/Cuprum-SemiBoldItalic.ttf
           weight: 600
           style: italic
-        - asset: resources/fonts/cuprum/Cuprum-Bold.ttf
+        - asset: assets/fonts/cuprum/Cuprum-Bold.ttf
           weight: 700
-        - asset: resources/fonts/cuprum/Cuprum-BoldItalic.ttf
+        - asset: assets/fonts/cuprum/Cuprum-BoldItalic.ttf
           weight: 700
           style: italic
