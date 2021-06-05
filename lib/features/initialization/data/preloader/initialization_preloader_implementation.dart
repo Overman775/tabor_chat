@@ -5,8 +5,8 @@ import '../../models/initialized_settings.dart';
 import 'initialization_preloader.dart';
 
 @prod
-@Injectable(as: InitializationPreloaderService)
-class InitializationPreloaderImplementationService implements InitializationPreloaderService {
+@Injectable(as: InitializationPreloaderRepository)
+class InitializationPreloaderImplementationService implements InitializationPreloaderRepository {
   InitializationPreloaderImplementationService({required this.network});
 
   final NetworkService network;

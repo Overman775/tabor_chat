@@ -1,5 +1,5 @@
 import '../../models/initialized_settings.dart';
 
-abstract class InitializationPreloaderService {
+abstract class InitializationPreloaderRepository {
   Future<InitializedSettings> loadSettings();
 }

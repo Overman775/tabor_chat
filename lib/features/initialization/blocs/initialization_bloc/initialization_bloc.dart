@@ -18,7 +18,7 @@ class InitializationBloc extends Bloc<InitializationEvent, InitializationState> 
   }) : super(InitializationInitial());
 
   final RouterService navigator;
-  final InitializationPreloaderService repository;
+  final InitializationPreloaderRepository repository;
 
   @override
   Stream<InitializationState> mapEventToState(
