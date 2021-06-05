@@ -1,3 +1,10 @@
 {
-    "name": "Табор"
+    "name": "Табор",
+    "login":{
+        "label_login": "Логин",
+        "enter_button": "Войти",
+        "errors": {
+            "min_length_name": "Логин должен быть более 3 символов"
+        }
+    }
 }

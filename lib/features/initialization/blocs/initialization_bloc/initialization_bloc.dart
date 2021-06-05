@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../../../core/core.dart';
-
+import '../../../login/login.dart';
 import '../../initialization.dart';
 
 part 'initialization_event.dart';
@@ -26,7 +26,7 @@ class InitializationBloc extends Bloc<InitializationEvent, InitializationState> 
   ) async* {
     if (event is InitializationStartEvent) {
       await _loadingSettings();
-      //  navigator.go(initialRoute, removeUntil: (Route<dynamic> route) => false);
+      navigator.go(LoginRoutes.login, removeUntil: (Route<dynamic> route) => false);
     }
   }
 
@@ -35,6 +35,4 @@ class InitializationBloc extends Bloc<InitializationEvent, InitializationState> 
 
     injector.registerSingleton<InitializedSettings>(result);
   }
-
-  // String get initialRoute => CalculatorRoutes.calculator;
 }
