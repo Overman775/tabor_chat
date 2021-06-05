@@ -1,8 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mad_navigator/mad_navigator.dart';
-import '../../features/common/common.dart';
 
+import '../../features/common/common.dart';
+import '../../features/initialization/initialization.dart';
 import '../core.dart';
 
 @singleton
