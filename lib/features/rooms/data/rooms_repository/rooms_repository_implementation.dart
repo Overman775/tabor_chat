@@ -16,9 +16,7 @@ class RoomsRepositoryImplementation implements RoomsRepository {
     final Map<String, dynamic>? result = await network.get<Map<String, dynamic>>('/rooms');
 
     if (result?['result'] != null) {
-      return (result!['result'] as List<Map<String, dynamic>>)
-          .map((Map<String, dynamic> e) => Room.fromJson(e))
-          .toList();
+      return (result!['result'] as List<dynamic>).map((dynamic e) => Room.fromJson(e as Map<String, dynamic>)).toList();
     } else {
       throw 'Rooms not loaded';
     }

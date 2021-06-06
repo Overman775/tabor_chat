@@ -5,6 +5,7 @@ import 'package:mad_navigator/mad_navigator.dart';
 import '../../features/common/common.dart';
 import '../../features/initialization/initialization.dart';
 import '../../features/login/login.dart';
+import '../../features/rooms/rooms.dart';
 import '../core.dart';
 
 @singleton
@@ -36,5 +37,6 @@ class AppRouter extends MadRouter {
   List<MadPage> routes = <MadPage>[
     ...InitializationRoutes.routes,
     ...LoginRoutes.routes,
+    ...RoomsRoutes.routes,
   ];
 }
