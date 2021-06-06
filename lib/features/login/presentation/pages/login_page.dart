@@ -16,6 +16,7 @@ class LoginPage extends StatelessWidget {
       body: BlocProvider<LoginBloc>(
         create: (_) => LoginBloc(
           navigator: injector.get(),
+          injector: injector,
         ),
         child: const _Content(),
       ),

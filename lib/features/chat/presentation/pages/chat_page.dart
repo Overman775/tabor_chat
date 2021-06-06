@@ -62,8 +62,12 @@ class _ChatList extends StatelessWidget {
 
   final List<RoomMessage> messages;
 
+  bool isSender(RoomMessage message, String userName) => message.sender.username == userName;
+
   @override
   Widget build(BuildContext context) {
+    final String userName = injector.get<String>(instanceName: 'userName');
+
     return ListView.builder(
       physics: const BouncingScrollPhysics(),
       itemCount: messages.length,
@@ -71,6 +75,7 @@ class _ChatList extends StatelessWidget {
         return MessageTile(
           key: Key('Room_${messages[index].id}'),
           message: messages[index],
+          isSender: isSender(messages[index], userName),
         );
       },
     );
