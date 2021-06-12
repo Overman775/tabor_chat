@@ -20,11 +20,12 @@ import '../../features/rooms/data/rooms_repository/rooms_repository.dart'
 import '../../features/rooms/data/rooms_repository/rooms_repository_implementation.dart'
     as _i10;
 import '../core.dart' as _i5;
-import '../services/network/network.dart' as _i13;
-import '../services/network/network_service_dio.dart' as _i14;
+import '../services/network/network.dart' as _i14;
+import '../services/network/network_service_dio.dart' as _i15;
 import '../services/router_service.dart' as _i11;
-import '../theme/bloc/theme_bloc.dart' as _i12;
-import 'injection_modules.dart' as _i15;
+import '../services/socket/socket_service_implementation.dart' as _i12;
+import '../theme/bloc/theme_bloc.dart' as _i13;
+import 'injection_modules.dart' as _i16;
 
 const String _prod = 'prod';
 
@@ -54,11 +55,12 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<String>(() => injectionModules.socketUrl,
         instanceName: 'socketUrl');
     gh.singleton<_i11.RouterService>(_i11.RouterService());
-    gh.singleton<_i12.ThemeBloc>(_i12.ThemeBloc());
-    gh.singleton<_i13.NetworkService>(_i14.NetworkServiceDio.injectorFactory(
+    gh.singleton<_i5.SocketService>(_i12.SocketServiceImplementation());
+    gh.singleton<_i13.ThemeBloc>(_i13.ThemeBloc());
+    gh.singleton<_i14.NetworkService>(_i15.NetworkServiceDio.injectorFactory(
         get<_i6.Connectivity>(), get<String>(instanceName: 'baseUrl')));
     return this;
   }
 }
 
-class _$InjectionModules extends _i15.InjectionModules {}
+class _$InjectionModules extends _i16.InjectionModules {}
