@@ -16,12 +16,10 @@ class InitializationBloc extends Bloc<InitializationEvent, InitializationState> 
   InitializationBloc({
     required this.navigator,
     required this.repository,
-    required this.injector,
   }) : super(InitializationInitial());
 
   final RouterService navigator;
   final InitializationPreloaderRepository repository;
-  final GetIt injector;
 
   @override
   Stream<InitializationState> mapEventToState(

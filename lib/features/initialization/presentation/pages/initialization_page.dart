@@ -16,7 +16,6 @@ class InitializationPage extends StatelessWidget {
         create: (_) => InitializationBloc(
           navigator: injector.get(),
           repository: injector.get(),
-          injector: injector,
         )..add(const InitializationStartEvent()),
         child: const _Preloader(),
       ),
