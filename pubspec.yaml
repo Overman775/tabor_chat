@@ -33,6 +33,7 @@ dependencies:
   #Network
   dio: ^4.0.0
   connectivity: ^3.0.6
+  web_socket_channel: ^2.1.0
 
   #Others
   flutter_svg: ^0.22.0
