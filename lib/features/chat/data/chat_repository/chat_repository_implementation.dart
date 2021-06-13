@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/core.dart';
@@ -7,9 +9,13 @@ import 'chat_repository.dart';
 @prod
 @Injectable(as: ChatRepository)
 class ChatRepositoryImplementation implements ChatRepository {
-  ChatRepositoryImplementation({required this.network});
+  ChatRepositoryImplementation({
+    required this.network,
+    required this.socketService,
+  });
 
   final NetworkService network;
+  final SocketService socketService;
 
   @override
   Future<List<RoomMessage>> loadHistory(String roomName) async {
@@ -25,4 +31,10 @@ class ChatRepositoryImplementation implements ChatRepository {
       throw 'History not loaded';
     }
   }
+
+  @override
+  StreamSink<dynamic> get chatSink => socketService.chatSink;
+
+  @override
+  Stream<dynamic> get chatStream => socketService.chatStream;
 }

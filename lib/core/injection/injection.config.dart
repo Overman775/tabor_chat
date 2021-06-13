@@ -4,22 +4,22 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
-import 'package:connectivity/connectivity.dart' as _i6;
+import 'package:connectivity/connectivity.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../../features/chat/data/chat_repository/chat_repository.dart' as _i3;
+import '../../features/chat/data/chat_repository/chat_repository.dart' as _i9;
 import '../../features/chat/data/chat_repository/chat_repository_implementation.dart'
-    as _i4;
-import '../../features/initialization/data/preloader/initialization_preloader.dart'
-    as _i7;
-import '../../features/initialization/data/preloader/initialization_preloader_implementation.dart'
-    as _i8;
-import '../../features/rooms/data/rooms_repository/rooms_repository.dart'
-    as _i9;
-import '../../features/rooms/data/rooms_repository/rooms_repository_implementation.dart'
     as _i10;
-import '../core.dart' as _i5;
+import '../../features/initialization/data/preloader/initialization_preloader.dart'
+    as _i4;
+import '../../features/initialization/data/preloader/initialization_preloader_implementation.dart'
+    as _i5;
+import '../../features/rooms/data/rooms_repository/rooms_repository.dart'
+    as _i7;
+import '../../features/rooms/data/rooms_repository/rooms_repository_implementation.dart'
+    as _i8;
+import '../core.dart' as _i6;
 import '../services/network/network.dart' as _i14;
 import '../services/network/network_service_dio.dart' as _i15;
 import '../services/router_service.dart' as _i11;
@@ -38,27 +38,28 @@ extension GetItInjectableX on _i1.GetIt {
       {String? environment, _i2.EnvironmentFilter? environmentFilter}) {
     final gh = _i2.GetItHelper(this, environment, environmentFilter);
     final injectionModules = _$InjectionModules();
-    gh.factory<_i3.ChatRepository>(
-        () => _i4.ChatRepositoryImplementation(
-            network: get<_i5.NetworkService>()),
+    gh.lazySingleton<_i3.Connectivity>(() => injectionModules.connectivity());
+    gh.factory<_i4.InitializationPreloaderRepository>(
+        () => _i5.InitializationPreloaderImplementationService(
+            network: get<_i6.NetworkService>()),
         registerFor: {_prod});
-    gh.lazySingleton<_i6.Connectivity>(() => injectionModules.connectivity());
-    gh.factory<_i7.InitializationPreloaderRepository>(
-        () => _i8.InitializationPreloaderImplementationService(
-            network: get<_i5.NetworkService>()),
-        registerFor: {_prod});
-    gh.factory<_i9.RoomsRepository>(
-        () => _i10.RoomsRepositoryImplementation(
-            network: get<_i5.NetworkService>()),
+    gh.factory<_i7.RoomsRepository>(
+        () => _i8.RoomsRepositoryImplementation(
+            network: get<_i6.NetworkService>()),
         registerFor: {_prod});
     gh.factory<String>(() => injectionModules.baseUrl, instanceName: 'baseUrl');
     gh.factory<String>(() => injectionModules.socketUrl,
         instanceName: 'socketUrl');
+    gh.factory<_i9.ChatRepository>(
+        () => _i10.ChatRepositoryImplementation(
+            network: get<_i6.NetworkService>(),
+            socketService: get<_i6.SocketService>()),
+        registerFor: {_prod});
     gh.singleton<_i11.RouterService>(_i11.RouterService());
-    gh.singleton<_i5.SocketService>(_i12.SocketServiceImplementation());
+    gh.singleton<_i6.SocketService>(_i12.SocketServiceImplementation());
     gh.singleton<_i13.ThemeBloc>(_i13.ThemeBloc());
     gh.singleton<_i14.NetworkService>(_i15.NetworkServiceDio.injectorFactory(
-        get<_i6.Connectivity>(), get<String>(instanceName: 'baseUrl')));
+        get<_i3.Connectivity>(), get<String>(instanceName: 'baseUrl')));
     return this;
   }
 }
