@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -69,9 +70,11 @@ class __ContentState extends State<_Content> {
               width: 250.sp,
               child: TextFormField(
                 controller: _nameTextController,
-                maxLength: _settings.maxUsernameLength,
                 decoration: InputDecoration(labelText: LocaleKeys.login_label_login.tr()),
                 validator: _nameValidator,
+                inputFormatters: <TextInputFormatter>[
+                  LengthLimitingTextInputFormatter(_settings.maxUsernameLength),
+                ],
               ),
             ),
             SizedBox(height: Ds.defaultMargin.sp),
