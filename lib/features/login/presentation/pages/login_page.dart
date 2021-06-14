@@ -16,7 +16,8 @@ class LoginPage extends StatelessWidget {
       body: BlocProvider<LoginBloc>(
         create: (_) => LoginBloc(
           navigator: injector.get(),
-          injector: injector,
+          socketService: injector.get(),
+          socketUrl: injector.get(instanceName: 'socketUrl'),
         ),
         child: const _Content(),
       ),

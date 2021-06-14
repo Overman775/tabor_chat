@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get_it/get_it.dart';
 
 import '../../../../core/core.dart';
 import '../../../rooms/rooms.dart';
@@ -12,10 +11,15 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc({required this.navigator, required this.injector}) : super(LoginInitial());
+  LoginBloc({
+    required this.navigator,
+    required this.socketService,
+    required this.socketUrl,
+  }) : super(LoginInitial());
 
   final RouterService navigator;
-  final GetIt injector;
+  final SocketService socketService;
+  final String socketUrl;
 
   @override
   Stream<LoginState> mapEventToState(
@@ -27,6 +31,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       yield LoginSentState();
 
       injector.registerFactory<String>(() => event.name, instanceName: 'userName');
+
+      socketService.init(SocketConfiguration(socketUrl: socketUrl, userName: event.name));
+      logger.i('Connect socket $socketUrl as "${event.name}"');
+
       navigator.go(RoomsRoutes.rooms, removeUntil: (Route<dynamic> route) => false);
     }
   }
