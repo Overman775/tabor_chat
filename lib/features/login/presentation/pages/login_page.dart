@@ -53,7 +53,7 @@ class __ContentState extends State<_Content> {
   }
 
   String? _nameValidator(String? text) {
-    if (text == null || text.length < 3) {
+    if (text == null || text.trim().length < 3) {
       return LocaleKeys.login_errors_min_length_name.tr();
     }
   }

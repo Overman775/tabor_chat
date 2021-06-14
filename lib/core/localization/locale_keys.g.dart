@@ -12,6 +12,8 @@ abstract class  LocaleKeys {
   static const rooms_new_chat_dialog_ok = 'rooms.new_chat_dialog.ok';
   static const rooms_new_chat_dialog_cancel = 'rooms.new_chat_dialog.cancel';
   static const rooms_new_chat_dialog_hint = 'rooms.new_chat_dialog.hint';
+  static const rooms_new_chat_dialog_errors_min_length_name = 'rooms.new_chat_dialog.errors.min_length_name';
+  static const rooms_new_chat_dialog_errors = 'rooms.new_chat_dialog.errors';
   static const rooms_new_chat_dialog = 'rooms.new_chat_dialog';
   static const rooms = 'rooms';
   static const chat_input_hint = 'chat.input_hint';

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:tabor_chat/features/initialization/initialization.dart';
 
 import '../../../../core/core.dart';
 import '../../../chat/chat.dart';
+import '../../../initialization/initialization.dart';
 import '../../rooms.dart';
 
 class AddChat extends StatefulWidget {
@@ -15,11 +15,13 @@ class AddChat extends StatefulWidget {
 }
 
 class _AddChatState extends State<AddChat> {
+  late GlobalKey<FormState> _formKey;
   late InitializedSettings _settings;
   late TextEditingController _newChatTextFieldController;
 
   @override
   void initState() {
+    _formKey = GlobalKey<FormState>();
     _settings = injector.get();
     _newChatTextFieldController = TextEditingController();
     super.initState();
@@ -32,7 +34,17 @@ class _AddChatState extends State<AddChat> {
   }
 
   void closeDialog(BuildContext context) => Navigator.of(context).pop();
-  void sendDialogResult(BuildContext context) => Navigator.of(context).pop(_newChatTextFieldController.text);
+  void sendDialogResult(BuildContext context) {
+    if (_formKey.currentState!.validate()) {
+      Navigator.of(context).pop(_newChatTextFieldController.text);
+    }
+  }
+
+  String? _roomNameValidator(String? text) {
+    if (text == null || text.trim().length < 3) {
+      return LocaleKeys.rooms_new_chat_dialog_errors_min_length_name.tr();
+    }
+  }
 
   Future<String?> _displayDialog(BuildContext context) async {
     return showDialog<String?>(
@@ -40,12 +52,16 @@ class _AddChatState extends State<AddChat> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(LocaleKeys.rooms_new_chat_dialog_title.tr()),
-            content: TextField(
-              controller: _newChatTextFieldController,
-              textInputAction: TextInputAction.go,
-              decoration: InputDecoration(hintText: LocaleKeys.rooms_new_chat_dialog_hint.tr()),
-              onEditingComplete: () => sendDialogResult(context),
-              inputFormatters: <TextInputFormatter>[LengthLimitingTextInputFormatter(_settings.maxRoomTitleLength)],
+            content: Form(
+              key: _formKey,
+              child: TextFormField(
+                controller: _newChatTextFieldController,
+                textInputAction: TextInputAction.go,
+                decoration: InputDecoration(hintText: LocaleKeys.rooms_new_chat_dialog_hint.tr()),
+                onEditingComplete: () => sendDialogResult(context),
+                inputFormatters: <TextInputFormatter>[LengthLimitingTextInputFormatter(_settings.maxRoomTitleLength)],
+                validator: _roomNameValidator,
+              ),
             ),
             actions: <Widget>[
               TextButton(
