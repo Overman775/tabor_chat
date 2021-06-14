@@ -37,10 +37,14 @@ class RoomBloc extends Bloc<RoomEvent, RoomState> {
   Stream<RoomState> mapEventToState(
     RoomEvent event,
   ) async* {
-    if (event is GetRoomEvent) {
+    if (event is GetRoomHistoryEvent) {
       yield RoomLoadingState();
       final List<RoomMessage> history = await repository.loadHistory(event.roomName);
       _messages = history.reversed.toList();
+      yield RoomMessagesState(messages: _messages);
+      _chatSubscribe();
+    } else if (event is GetRoomNewEvent) {
+      _messages = <RoomMessage>[];
       yield RoomMessagesState(messages: _messages);
       _chatSubscribe();
     } else if (event is _MessageFromRoomEvent) {

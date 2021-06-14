@@ -8,7 +8,11 @@ abstract class  LocaleKeys {
   static const login_errors = 'login.errors';
   static const login = 'login';
   static const rooms_title = 'rooms.title';
-  static const rooms_new_chat = 'rooms.new_chat';
+  static const rooms_new_chat_dialog_title = 'rooms.new_chat_dialog.title';
+  static const rooms_new_chat_dialog_ok = 'rooms.new_chat_dialog.ok';
+  static const rooms_new_chat_dialog_cancel = 'rooms.new_chat_dialog.cancel';
+  static const rooms_new_chat_dialog_hint = 'rooms.new_chat_dialog.hint';
+  static const rooms_new_chat_dialog = 'rooms.new_chat_dialog';
   static const rooms = 'rooms';
   static const chat_input_hint = 'chat.input_hint';
   static const chat = 'chat';

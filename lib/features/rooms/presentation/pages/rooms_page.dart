@@ -11,18 +11,18 @@ class RoomsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(LocaleKeys.rooms_title.tr()),
-      ),
-      body: BlocProvider<RoomsLoaderBloc>(
-        create: (_) => RoomsLoaderBloc(
-          navigator: injector.get(),
-          repository: injector.get(),
-        )..add(GetRoomsLoaderEvent()),
-        child: const _Content(),
-      ),
-    );
+    return BlocProvider<RoomsBloc>(
+        create: (_) => RoomsBloc(
+              navigator: injector.get(),
+              repository: injector.get(),
+            )..add(GetRoomsEvent()),
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(LocaleKeys.rooms_title.tr()),
+          ),
+          floatingActionButton: const AddChat(),
+          body: const _Content(),
+        ));
   }
 }
 
@@ -31,10 +31,10 @@ class _Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RoomsLoaderBloc, RoomsLoaderState>(
-      builder: (BuildContext context, RoomsLoaderState state) {
+    return BlocBuilder<RoomsBloc, RoomsState>(
+      builder: (BuildContext context, RoomsState state) {
         if (state is RoomsLoadingState) {
-          return const _RoomsLoader();
+          return const _Rooms();
         } else if (state is RoomsLoadedState) {
           return _RoomsList(rooms: state.rooms);
         }
@@ -44,8 +44,8 @@ class _Content extends StatelessWidget {
   }
 }
 
-class _RoomsLoader extends StatelessWidget {
-  const _RoomsLoader({Key? key}) : super(key: key);
+class _Rooms extends StatelessWidget {
+  const _Rooms({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,9 +62,12 @@ class _RoomsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final EdgeInsetsGeometry paddingSafeArea = MediaQuery.of(context).padding;
+
     return ListView.builder(
       physics: const BouncingScrollPhysics(),
       itemCount: rooms.length,
+      padding: paddingSafeArea,
       itemBuilder: (BuildContext context, int index) {
         return RoomTile(
           key: Key('Room_${rooms[index].name}'),

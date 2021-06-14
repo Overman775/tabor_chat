@@ -7,8 +7,16 @@ abstract class RoomEvent extends Equatable {
   List<Object> get props => <Object>[];
 }
 
-class GetRoomEvent extends RoomEvent {
-  const GetRoomEvent({
+class GetRoomHistoryEvent extends RoomEvent {
+  const GetRoomHistoryEvent({
+    required this.roomName,
+  });
+
+  final String roomName;
+}
+
+class GetRoomNewEvent extends RoomEvent {
+  const GetRoomNewEvent({
     required this.roomName,
   });
 

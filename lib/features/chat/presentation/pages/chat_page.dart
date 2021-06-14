@@ -11,6 +11,14 @@ class ChatPage extends StatelessWidget {
 
   final ChatPageArguments arguments;
 
+  RoomEvent _getRoomBlocStartEvent() {
+    if (arguments.isNewChat) {
+      return GetRoomNewEvent(roomName: arguments.roomName);
+    } else {
+      return GetRoomHistoryEvent(roomName: arguments.roomName);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +30,7 @@ class ChatPage extends StatelessWidget {
           repository: injector.get(),
           roomName: arguments.roomName,
           userName: injector.get<String>(instanceName: 'userName'),
-        )..add(GetRoomEvent(roomName: arguments.roomName)),
+        )..add(_getRoomBlocStartEvent()),
         lazy: false,
         child: const _Content(),
       ),
