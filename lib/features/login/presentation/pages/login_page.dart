@@ -75,6 +75,7 @@ class __ContentState extends State<_Content> {
                 inputFormatters: <TextInputFormatter>[
                   LengthLimitingTextInputFormatter(_settings.maxUsernameLength),
                 ],
+                onEditingComplete: _onPressed,
               ),
             ),
             SizedBox(height: Ds.defaultMargin.sp),
