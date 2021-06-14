@@ -35,15 +35,25 @@ class _Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RoomBloc, RoomState>(
-      builder: (BuildContext context, RoomState state) {
-        if (state is RoomLoadingState) {
-          return const _Room();
-        } else if (state is RoomMessagesState) {
-          return _ChatList(messages: state.messages);
-        }
-        return const SizedBox.shrink();
-      },
+    return SafeArea(
+      top: false,
+      child: Column(
+        children: <Widget>[
+          Expanded(
+            child: BlocBuilder<RoomBloc, RoomState>(
+              builder: (BuildContext context, RoomState state) {
+                if (state is RoomLoadingState) {
+                  return const _Room();
+                } else if (state is RoomMessagesState) {
+                  return _ChatList(messages: state.messages);
+                }
+                return const SizedBox.shrink();
+              },
+            ),
+          ),
+          const ChatInput()
+        ],
+      ),
     );
   }
 }

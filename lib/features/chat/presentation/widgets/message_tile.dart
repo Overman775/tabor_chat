@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:tabor_chat/core/core.dart';
+import '../../../../core/core.dart';
 
 import '../../chat.dart';
 

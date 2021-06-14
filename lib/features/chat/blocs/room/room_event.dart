@@ -27,7 +27,7 @@ class _MessageFromRoomEvent extends RoomEvent {
 class SendMessageRoomEvent extends RoomEvent {
   const SendMessageRoomEvent(this.message);
 
-  final RoomMessageRequest message;
+  final String message;
 
   @override
   List<Object> get props => <Object>[message];

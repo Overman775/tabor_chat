@@ -10,5 +10,7 @@ abstract class  LocaleKeys {
   static const rooms_title = 'rooms.title';
   static const rooms_new_chat = 'rooms.new_chat';
   static const rooms = 'rooms';
+  static const chat_input_hint = 'chat.input_hint';
+  static const chat = 'chat';
 
 }

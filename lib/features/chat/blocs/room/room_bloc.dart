@@ -50,18 +50,10 @@ class RoomBloc extends Bloc<RoomEvent, RoomState> {
     }
   }
 
-  Stream<RoomMessagesState> _sendMessage(RoomMessageRequest message) async* {
-    repository.chatSink.add(message.toJson());
+  Stream<RoomMessagesState> _sendMessage(String message) async* {
+    final RoomMessageRequest request = RoomMessageRequest(room: roomName, text: message);
 
-    final RoomMessage roomMessage = RoomMessage(
-      room: roomName,
-      text: message.text,
-      created: DateTime.now(),
-      id: message.id,
-      sender: RoomMessageSender(username: userName),
-    );
-
-    yield* _addMessage(roomMessage);
+    repository.chatSink.add(request.toJson());
   }
 
   Stream<RoomMessagesState> _addMessage(RoomMessage message) async* {

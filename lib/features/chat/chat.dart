@@ -7,4 +7,5 @@ export 'models/room_message.dart';
 export 'models/room_message_request.dart';
 export 'models/room_message_sender.dart';
 export 'presentation/pages/chat_page.dart';
+export 'presentation/widgets/chat_input.dart';
 export 'presentation/widgets/message_tile.dart';
