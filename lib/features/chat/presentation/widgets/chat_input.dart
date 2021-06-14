@@ -31,7 +31,7 @@ class _ChatInputState extends State<ChatInput> {
 
   void _onSendMessage() {
     roomBloc.add(SendMessageRoomEvent(_messageTextController.text));
-    _messageTextController.text = '';
+    _messageTextController.clear();
   }
 
   @override
@@ -50,6 +50,8 @@ class _ChatInputState extends State<ChatInput> {
                 ),
                 inputFormatters: <TextInputFormatter>[LengthLimitingTextInputFormatter(255)],
                 onSubmitted: (_) => _onSendMessage(),
+                textInputAction: TextInputAction.send,
+                onEditingComplete: () {},
               ),
             ),
             const SizedBox(width: Ds.defaultMarginHalf),
