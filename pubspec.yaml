@@ -50,7 +50,7 @@ dev_dependencies:
 
   #Native generators
   flutter_native_splash: ^1.1.8+4
-  #flutter_launcher_icons: ^0.9.0
+  flutter_launcher_icons: ^0.9.0
 
   #Injections
   injectable_generator: ^1.4.1
@@ -61,6 +61,14 @@ flutter_native_splash:
   color: "010101"
   android_disable_fullscreen: true
 
+# Настройки иконки приложения
+flutter_icons:
+  ios: true
+  android: true
+  image_path_android: "resources/app icon/android.png"
+  image_path_ios: "resources/app icon/ios.png"
+  adaptive_icon_background: "#981c26"
+  adaptive_icon_foreground: "resources/app icon/foreground.png"
 
 flutter:
   uses-material-design: true
