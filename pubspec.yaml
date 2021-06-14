@@ -57,8 +57,8 @@ dev_dependencies:
 
 # Настройки сплэш скрина
 flutter_native_splash:
-  image: "resources/splash/splash.png"
-  color: "ffffff"
+  image: "resources/splash/logo.png"
+  color: "010101"
   android_disable_fullscreen: true
 
 
