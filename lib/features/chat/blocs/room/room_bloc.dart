@@ -2,10 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
-
-import 'package:collection/collection.dart';
-import 'package:tabor_chat/core/core.dart';
 
 import '../../chat.dart';
 
