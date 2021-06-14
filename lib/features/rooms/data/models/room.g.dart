@@ -9,5 +9,8 @@ part of 'room.dart';
 Room _$RoomFromJson(Map<String, dynamic> json) {
   return Room(
     name: json['name'] as String,
+    lastMessage: json['last_message'] == null
+        ? null
+        : RoomMessage.fromJson(json['last_message'] as Map<String, dynamic>),
   );
 }

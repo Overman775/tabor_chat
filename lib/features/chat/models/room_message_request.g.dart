@@ -8,6 +8,8 @@ part of 'room_message_request.dart';
 
 Map<String, dynamic> _$RoomMessageRequestToJson(RoomMessageRequest instance) {
   final val = <String, dynamic>{
+    'stringify': instance.stringify,
+    'hash_code': instance.hashCode,
     'room': instance.room,
     'text': instance.text,
   };
@@ -19,5 +21,6 @@ Map<String, dynamic> _$RoomMessageRequestToJson(RoomMessageRequest instance) {
   }
 
   writeNotNull('id', instance.id);
+  val['props'] = instance.props;
   return val;
 }

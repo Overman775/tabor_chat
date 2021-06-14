@@ -22,8 +22,29 @@ class RoomTile extends StatelessWidget {
     return InkWell(
       onTap: () => _onTap(context),
       child: ListTile(
+        leading: CircleAvatar(
+          backgroundColor: context.colors.secondary,
+          child: Text(
+            room.name[0].toUpperCase(),
+            style: TextStyle(color: context.colors.onSecondary),
+          ),
+        ),
+        trailing: _getFormattedDate(context),
         title: Text(room.name),
       ),
     );
+  }
+
+  Widget _getFormattedDate(BuildContext context) {
+    final DateTime? created = room.lastMessage?.created;
+    if (created != null) {
+      final DateFormat formatter = DateFormat.yMMMMd(context.locale.toLanguageTag()).add_Hm();
+      return Text(
+        formatter.format(room.lastMessage!.created),
+        style: TextStyle(color: context.colors.primaryVariant),
+      );
+    } else {
+      return SizedBox.shrink();
+    }
   }
 }
