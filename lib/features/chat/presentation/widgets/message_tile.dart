@@ -23,7 +23,7 @@ class MessageTile extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: isSender ? context.colors.primaryLight : context.colors.primary,
+            color: isSender ? context.colors.primary : context.colors.primaryVariant,
           ),
           padding: const EdgeInsets.all(16),
           child: Text(

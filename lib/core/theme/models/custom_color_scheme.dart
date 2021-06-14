@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//Кастомная тема для расширения под разные дизайны
 class CustomColorScheme extends ColorScheme {
   const CustomColorScheme({
     required Color primary,
@@ -15,10 +16,6 @@ class CustomColorScheme extends ColorScheme {
     required Color onBackground,
     required Color onError,
     required Brightness brightness,
-    required this.gray,
-    required this.grayLight,
-    required this.grayDark,
-    required this.primaryLight,
   }) : super(
           primary: primary,
           primaryVariant: primaryVariant,
@@ -34,9 +31,4 @@ class CustomColorScheme extends ColorScheme {
           onError: onError,
           brightness: brightness,
         );
-
-  final Color gray;
-  final Color grayLight;
-  final Color grayDark;
-  final Color primaryLight;
 }

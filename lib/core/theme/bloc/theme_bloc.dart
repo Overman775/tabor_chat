@@ -5,14 +5,14 @@ import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../core.dart';
-import '../themes/app_theme_blue_light.dart';
+import '../themes/theme_nane_nane.dart';
 
 part 'theme_event.dart';
 part 'theme_state.dart';
 
 @singleton
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
-  ThemeBloc() : super(ThemeState(theme: AppThemeGreenLight()));
+  ThemeBloc() : super(ThemeState(theme: AppThemeNaneNane()));
 
   @override
   Stream<ThemeState> mapEventToState(
@@ -25,8 +25,8 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
 
   /// Фильтруем темы и выводит нужную тему
   Stream<ThemeState> _getTheme(ThemeType themeType) async* {
-    if (themeType == ThemeType.greenLight) {
-      yield ThemeState(theme: AppThemeGreenLight());
+    if (themeType == ThemeType.naneNane) {
+      yield ThemeState(theme: AppThemeNaneNane());
     }
   }
 }

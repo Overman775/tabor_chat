@@ -1,3 +1,3 @@
 enum ThemeType {
-  greenLight,
+  naneNane,
 }

@@ -6,53 +6,49 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core.dart';
 
-class AppThemeGreenLight implements AppTheme {
+class AppThemeNaneNane implements AppTheme {
   @override
-  TextTheme textTheme = ThemeData.light().textTheme.apply(
-        fontFamily: 'Quicksand',
-        bodyColor: const Color(0xFF676A6F),
-        displayColor: const Color(0xFF3E3E3E),
+  TextTheme textTheme = ThemeData.dark().textTheme.apply(
+        fontFamily: 'Cuprum',
+        bodyColor: const Color(0xFFf9e4bb),
+        displayColor: const Color(0xFFf9e4bb),
+        decorationColor: const Color(0xFFf9e4bb),
       );
 
   @override
   CustomColorScheme colorScheme = const CustomColorScheme(
-    brightness: Brightness.light,
-    primary: Color(0xFF7CC547),
-    primaryVariant: Color(0xFF6BA53D),
-    primaryLight: Color(0xFFD8EEC8),
-    secondary: Color(0xFFFF9F1E),
-    secondaryVariant: Color(0xFFED861F),
-    background: Colors.white,
-    surface: Color(0xFFEEF2F7),
-    onBackground: Colors.white,
-    onSurface: Color(0xFF3E3E3E),
-    onError: Colors.white,
-    onPrimary: Colors.white,
-    onSecondary: Colors.white,
+    brightness: Brightness.dark,
+    primary: Color(0xFF981c26),
+    primaryVariant: Color(0xFF630000),
+    secondary: Color(0xFFf5c565),
+    secondaryVariant: Color(0xFFbf9536),
+    background: Color(0xFF010101),
+    surface: Color(0xFF010101),
+    onBackground: Color(0xFFf9e4bb),
+    onSurface: Color(0xFFf9e4bb),
+    onError: Color(0xFF010101),
+    onPrimary: Color(0xFF010101),
+    onSecondary: Color(0xFF010101),
     error: Color(0xFFED441F),
-    gray: Color(0xFF676A6F),
-    grayLight: Color(0xFFEEF2F7),
-    grayDark: Color(0xFF3E3E3E),
   );
-
   @override
   ThemeData get themeData => ThemeData.from(
         colorScheme: colorScheme,
         textTheme: textTheme,
       ).copyWith(
-        highlightColor: Colors.white.withOpacity(.25),
-        splashColor: Colors.white.withOpacity(.25),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.white,
-          brightness: Brightness.light,
-          centerTitle: false,
-        ),
-        bottomAppBarColor: Colors.white,
+        highlightColor: colorScheme.onSurface.withOpacity(.25),
+        splashColor: colorScheme.onSurface.withOpacity(.25),
+        appBarTheme: AppBarTheme(
+            color: colorScheme.primaryVariant,
+            brightness: Brightness.dark,
+            centerTitle: false,
+            titleTextStyle: TextStyle(color: colorScheme.secondary),
+            toolbarTextStyle: TextStyle(color: colorScheme.secondary)),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
               if (states.contains(MaterialState.disabled)) {
-                return colorScheme.grayLight;
+                return colorScheme.onBackground;
               }
               return colorScheme.secondary;
             }),
@@ -66,26 +62,26 @@ class AppThemeGreenLight implements AppTheme {
           ),
         ),
         inputDecorationTheme: InputDecorationTheme(
-          labelStyle: TextStyle(fontSize: 14.sp, color: colorScheme.gray),
+          labelStyle: TextStyle(fontSize: 16.sp, color: colorScheme.secondary),
           filled: true,
-          fillColor: colorScheme.grayLight,
+          fillColor: colorScheme.primaryVariant,
           helperMaxLines: 99,
           errorMaxLines: 99,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.sp),
             gapPadding: 6,
-            borderSide: BorderSide(color: colorScheme.gray.withOpacity(0.33)),
+            borderSide: BorderSide(color: colorScheme.onSurface.withOpacity(0.33)),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.sp),
             gapPadding: 6,
-            borderSide: BorderSide(color: colorScheme.gray.withOpacity(0.33)),
+            borderSide: BorderSide(color: colorScheme.onSurface.withOpacity(0.33)),
           ),
           contentPadding: EdgeInsets.symmetric(
             horizontal: Ds.defaultMargin.w,
             vertical: Ds.defaultMargin.sp,
           ),
         ),
-        dividerColor: colorScheme.grayDark,
+        dividerColor: colorScheme.onSurface,
       );
 }
