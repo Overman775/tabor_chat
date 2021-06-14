@@ -3,7 +3,7 @@ import 'dart:async';
 import '../../chat.dart';
 
 abstract class ChatRepository {
-  Stream<dynamic> get chatStream;
-  StreamSink<dynamic> get chatSink;
+  Stream<Map<String, dynamic>> get chatStream;
+  StreamSink<Map<String, dynamic>> get chatSink;
   Future<List<RoomMessage>> loadHistory(String roomName);
 }

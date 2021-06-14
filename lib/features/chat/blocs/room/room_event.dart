@@ -14,3 +14,21 @@ class GetRoomEvent extends RoomEvent {
 
   final String roomName;
 }
+
+class _MessageFromRoomEvent extends RoomEvent {
+  const _MessageFromRoomEvent(this.message);
+
+  final RoomMessage message;
+
+  @override
+  List<Object> get props => <Object>[message];
+}
+
+class SendMessageRoomEvent extends RoomEvent {
+  const SendMessageRoomEvent(this.message);
+
+  final RoomMessageRequest message;
+
+  @override
+  List<Object> get props => <Object>[message];
+}

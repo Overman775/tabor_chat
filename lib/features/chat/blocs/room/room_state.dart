@@ -11,13 +11,19 @@ class RoomInitial extends RoomState {}
 
 class RoomLoadingState extends RoomState {}
 
-class RoomLoadedState extends RoomState {
-  const RoomLoadedState({required this.messages});
+class RoomMessagesState extends RoomState {
+  const RoomMessagesState({required this.messages});
 
   final List<RoomMessage> messages;
 
   @override
-  List<Object> get props => <Object>[messages];
+  bool operator ==(Object other) => false;
+
+  @override
+  int get hashCode => messages.hashCode;
+
+  @override
+  String toString() => 'RoomMessagesState(messages: $messages)';
 }
 
 class RoomErrorState extends RoomState {}

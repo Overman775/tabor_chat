@@ -33,8 +33,8 @@ class ChatRepositoryImplementation implements ChatRepository {
   }
 
   @override
-  StreamSink<dynamic> get chatSink => socketService.chatSink;
+  StreamSink<Map<String, dynamic>> get chatSink => socketService.chatSink;
 
   @override
-  Stream<dynamic> get chatStream => socketService.chatStream;
+  Stream<Map<String, dynamic>> get chatStream => socketService.chatStream;
 }
