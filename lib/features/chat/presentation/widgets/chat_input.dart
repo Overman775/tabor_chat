@@ -2,6 +2,7 @@ import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tabor_chat/features/initialization/initialization.dart';
 import '../../../../core/core.dart';
 import '../../chat.dart';
 
@@ -14,8 +15,15 @@ class ChatInput extends StatefulWidget {
 
 class _ChatInputState extends State<ChatInput> {
   late RoomBloc roomBloc;
+  late InitializedSettings _settings;
+  late TextEditingController _messageTextController;
 
-  final TextEditingController _messageTextController = TextEditingController();
+  @override
+  void initState() {
+    _settings = injector.get();
+    _messageTextController = TextEditingController();
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -48,7 +56,7 @@ class _ChatInputState extends State<ChatInput> {
                 decoration: InputDecoration(
                   hintText: LocaleKeys.chat_input_hint.tr(),
                 ),
-                inputFormatters: <TextInputFormatter>[LengthLimitingTextInputFormatter(255)],
+                inputFormatters: <TextInputFormatter>[LengthLimitingTextInputFormatter(_settings.maxMessageLength)],
                 onSubmitted: (_) => _onSendMessage(),
                 textInputAction: TextInputAction.send,
                 onEditingComplete: () {},
