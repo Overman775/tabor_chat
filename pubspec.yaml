@@ -74,7 +74,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/
+    - assets/images/
     - assets/translations/
     - assets/fonts/cuprum/
   fonts:
