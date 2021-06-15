@@ -38,7 +38,7 @@ project
 ```
 
 Запуск:
-`icon_font_generator --from=icons --class-name=UiIcons --out-font=assets/icons/ui_icons.ttf --out-flutter=lib/core/resources/ui_icons.g.dart`
+`icon_font_generator --from=resources/icons --class-name=UiIcons --out-font=assets/icons/ui_icons.ttf --out-flutter=lib/core/resources/ui_icons.g.dart`
 
 ---
 

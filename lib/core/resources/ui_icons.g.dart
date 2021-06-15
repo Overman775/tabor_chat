@@ -12,4 +12,7 @@ class UiIconsData extends IconData {
 @immutable
 class UiIcons {
   UiIcons._();
+
+  // Generated code: do not hand-edit.
+  static const IconData logo = UiIconsData(0xe000);
 }
