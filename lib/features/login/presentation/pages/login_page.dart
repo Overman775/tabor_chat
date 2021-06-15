@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/core.dart';
 import '../../../common/common.dart';
@@ -66,6 +67,8 @@ class __ContentState extends State<_Content> {
         child: Column(
           children: <Widget>[
             const Spacer(),
+            const _Logo(),
+            const Spacer(),
             SizedBox(
               width: 250.sp,
               child: TextFormField(
@@ -114,6 +117,23 @@ class _LoginButton extends StatelessWidget {
             child: Text(LocaleKeys.login_enter_button.tr()),
           );
         },
+      ),
+    );
+  }
+}
+
+class _Logo extends StatelessWidget {
+  const _Logo({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 100.sp,
+      child: SvgPicture.asset(
+        R.ASSETS_IMAGES_LOGO_SVG,
+        width: double.infinity,
+        alignment: Alignment.bottomCenter,
+        fit: BoxFit.fitHeight,
       ),
     );
   }
