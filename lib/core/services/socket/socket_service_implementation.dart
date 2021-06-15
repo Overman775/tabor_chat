@@ -31,7 +31,6 @@ class SocketServiceImplementation implements SocketService {
       _initMessageListener();
     } catch (e) {
       logger.e('Can not connect WS', e);
-      reconnect(config);
     }
   }
 
