@@ -6,6 +6,7 @@ import 'dio_interceptors/dio_connectivity_request_retry.dart';
 import 'dio_interceptors/dio_error_interceptor.dart';
 import 'dio_interceptors/dio_logger_interceptor.dart';
 import 'dio_interceptors/dio_retry_interceptor.dart';
+import 'dio_transformer/dio_isolate_transformer.dart';
 import 'network.dart';
 
 /// Basic HTTP request service wrapper around the common
@@ -32,6 +33,7 @@ class NetworkServiceDio implements NetworkService {
         RetryOnConnectionChangeInterceptor(requestRetry: requestRetry);
 
     _dio.interceptors..add(retryInterceptor)..add(ExceptionsStatusCodeInterceptor())..add(LoggerInterceptor());
+    _dio.transformer = DioIsolateTransformer();
   }
 
   @factoryMethod
