@@ -4,7 +4,7 @@ publish_to: 'none'
 
 environment:
   sdk: ">=2.13.0 <3.0.0"
-  flutter: 2.2.1
+  flutter: 2.2.2
 
 dependencies:
   flutter:
@@ -12,7 +12,7 @@ dependencies:
 
   #BLoC
   flutter_bloc: ^7.0.1
-  equatable: ^2.0.2
+  equatable: ^2.0.3
   provider: ^5.0.0
 
   #Router
