@@ -17,3 +17,5 @@ class NewRoomsEvent extends RoomsEvent {
   @override
   List<Object> get props => <Object>[roomName];
 }
+
+class UpdateRoomsEvent extends RoomsEvent {}

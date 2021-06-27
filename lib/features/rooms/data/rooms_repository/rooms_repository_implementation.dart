@@ -7,9 +7,13 @@ import 'rooms_repository.dart';
 @prod
 @Injectable(as: RoomsRepository)
 class RoomsRepositoryImplementation implements RoomsRepository {
-  RoomsRepositoryImplementation({required this.network});
+  RoomsRepositoryImplementation({
+    required this.network,
+    required this.socketService,
+  });
 
   final NetworkService network;
+  final SocketService socketService;
 
   @override
   Future<List<Room>> loadRooms() async {
@@ -21,4 +25,7 @@ class RoomsRepositoryImplementation implements RoomsRepository {
       throw 'Rooms not loaded';
     }
   }
+
+  @override
+  Stream<Map<String, dynamic>> get chatStream => socketService.chatStream;
 }
