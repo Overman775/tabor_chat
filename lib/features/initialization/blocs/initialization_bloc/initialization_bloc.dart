@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get_it/get_it.dart';
 
 import '../../../../core/core.dart';
 import '../../../login/login.dart';

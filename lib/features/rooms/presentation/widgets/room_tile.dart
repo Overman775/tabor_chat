@@ -44,7 +44,7 @@ class RoomTile extends StatelessWidget {
         style: TextStyle(color: context.colors.primaryVariant),
       );
     } else {
-      return SizedBox.shrink();
+      return const SizedBox.shrink();
     }
   }
 }

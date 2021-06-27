@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mad_navigator/mad_navigator.dart';
-import 'package:tabor_chat/features/chat/chat.dart';
 
+import '../../features/chat/chat.dart';
 import '../../features/common/common.dart';
 import '../../features/initialization/initialization.dart';
 import '../../features/login/login.dart';

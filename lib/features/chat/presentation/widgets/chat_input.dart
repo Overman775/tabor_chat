@@ -1,9 +1,9 @@
-import 'package:provider/provider.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tabor_chat/features/initialization/initialization.dart';
+import 'package:provider/provider.dart';
+
 import '../../../../core/core.dart';
+import '../../../initialization/initialization.dart';
 import '../../chat.dart';
 
 class ChatInput extends StatefulWidget {
