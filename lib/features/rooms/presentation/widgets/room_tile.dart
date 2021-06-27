@@ -10,10 +10,12 @@ class RoomTile extends StatelessWidget {
 
   final Room room;
 
+  bool get isNewChat => room.lastMessage == null;
+
   void _onTap(BuildContext context) {
     injector.get<RouterService>().go(
           ChatRoutes.chat,
-          arguments: ChatPageArguments(roomName: room.name),
+          arguments: ChatPageArguments(roomName: room.name, isNewChat: isNewChat),
         );
   }
 
